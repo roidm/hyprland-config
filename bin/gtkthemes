@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## Set GTK Themes, Icons, Cursor and Fonts
+
+THEME='Tokyonight-Dark'
+ICONS='Tela-blue-dark'
+FONT='Ubuntu 11'
+CURSOR='Adwaita'
+FACTOR='1.35'
+SIZE='32'
+
+SCHEMA='gsettings set org.gnome.desktop.interface'
+
+apply_themes () {
+	${SCHEMA} gtk-theme "$THEME"
+	${SCHEMA} icon-theme "$ICONS"
+	${SCHEMA} cursor-theme "$CURSOR"
+        ${SCHEMA} cursor-size "$SIZE"
+	${SCHEMA} font-name "$FONT"
+        ${SCHEME} text-scaling-factor "$FACTOR"
+}
+
+apply_themes

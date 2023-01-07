@@ -1,0 +1,7 @@
+# My Hyprland config
+
+![1](https://raw.githubusercontent.com/roidm/hyprland-config/main/pics/1.png "Image 1")
+
+![2](https://raw.githubusercontent.com/roidm/hyprland-config/main/pics/2.png "Image 2")
+
+

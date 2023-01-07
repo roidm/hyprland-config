@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+# Terminate already running bar instances
+_ps=(mako eww waybar dunst polkit-gnome network-traffic.sh wbg aslstatus pipewire weather-timer)
+for _prs in "${_ps[@]}"; do
+	if [[ `pidof ${_prs}` ]]; then
+		killall -9 ${_prs}
+	fi
+done
+
+#gentoo-pipewire-launcher &
+~/.config/hypr/scripts/gtkthemes &
+
+while pgrep -x waybar >/dev/null; do sleep 1; done
+
+~/.azotebg &
+mako &
+polkit-gnome &
+waybar -c $HOME/.config/hypr/waybar/config.json -s $HOME/.config/hypr/waybar/style.css &
+#waybar -c ~/.config/hypr/waybar/config_shadow.json -s ~/.config/hypr/waybar/style_shadow.css &
+#weather-timer &
+#~/.config/eww/launch.sh &
+sleep 2 && xrdb -load ~/.Xresources
+#waybar -c /home/roidm/.config/hypr/waybar/config.json -s /home/roidm/.config/hypr/waybar/style.css &
+sleep 1 && pactl set-sink-volume @DEFAULT_SINK@ 70%
+
