@@ -8,10 +8,15 @@ for _prs in "${_ps[@]}"; do
 	fi
 done
 
-#gentoo-pipewire-launcher &
-~/.config/hypr/bin/gtkthemes &
-
 while pgrep -x waybar >/dev/null; do sleep 1; done
+
+THEME='Tokyonight-Dark'
+ICONS='Tela-blue-dark'
+FONT='Ubuntu 11'
+CURSOR='Adwaita'
+FACTOR='1.35'
+SIZE='32'
+SCHEMA='gsettings set org.gnome.desktop.interface'
 
 ~/.azotebg &
 mako &
@@ -20,3 +25,12 @@ waybar -c $HOME/.config/hypr/waybar/config.json -s $HOME/.config/hypr/waybar/sty
 sleep 2 && xrdb -load ~/.Xresources
 sleep 1 && pactl set-sink-volume @DEFAULT_SINK@ 70%
 
+apply_themes () {
+	${SCHEMA} gtk-theme "$THEME"
+	${SCHEMA} icon-theme "$ICONS"
+	${SCHEMA} cursor-theme "$CURSOR"
+        ${SCHEMA} cursor-size "$SIZE"
+	${SCHEMA} font-name "$FONT"
+        ${SCHEME} text-scaling-factor "$FACTOR"
+}
+apply_themes
